@@ -13,11 +13,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className="bg-background text-foreground font-sans antialiased">
+    <html lang="en" className={`${inter.variable} h-full`}>
+      <body className="h-full min-h-screen flex flex-col bg-background text-foreground font-sans antialiased">
         <Navbar />
 
-        <main className="max-w-5xl mx-auto w-full px-6 py-10">
+        <main className="flex-1 pt-16 max-w-5xl mx-auto w-full px-6 py-10">
           {children}
         </main>
 
@@ -26,3 +26,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+

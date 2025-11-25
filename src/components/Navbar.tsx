@@ -9,6 +9,7 @@ import {
   SheetContent,
   SheetHeader,
   SheetTitle,
+  SheetDescription,
   SheetTrigger,
 } from "@/components/ui/sheet";
 
@@ -23,57 +24,60 @@ export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="w-full border-b border-slate-800 bg-black/90 backdrop-blur supports-[backdrop-filter]:bg-black/60 fixed top-0 left-0 z-50">
+    <nav className="w-full border-b border-border bg-surface/90 backdrop-blur supports-backdrop-filter:bg-surface/70 fixed top-0 left-0 z-50">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-4 h-16">
-        {/* Logo / Brand */}
-        <Link href="/" className="text-xl font-semibold text-blue-400">
+        <Link href="/" className="text-xl font-semibold text-accent">
           adji.dev
         </Link>
 
-        {/* Desktop Nav */}
+        {/* Dekstop Nav */}
         <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`transition-colors ${
+              className={
                 pathname === link.href
-                  ? "text-blue-400"
-                  : "text-slate-300 hover:text-blue-400"
-              }`}
+                  ? "text-accent"
+                  : "text-foreground/70 hover:text-accent transition"
+              }
             >
               {link.name}
             </Link>
           ))}
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Nav */}
         <Sheet>
           <SheetTrigger asChild>
             <Button
               variant="outline"
               size="icon"
-              className="md:hidden border-slate-700 text-slate-300"
+              className="md:hidden border-border text-foreground/80 hover:text-accent"
             >
               <Menu className="w-5 h-5" />
             </Button>
           </SheetTrigger>
 
-          <SheetContent side="left" className="bg-black/95 border-slate-800">
+          <SheetContent
+            side="top"
+            className="bg-surface/95 border-b border-border h-auto"
+          >
             <SheetHeader>
-              <SheetTitle className="text-blue-400">Menu</SheetTitle>
+              <SheetTitle className="text-accent">Menu</SheetTitle>
+              <SheetDescription />
             </SheetHeader>
 
-            <div className="mt-6 flex flex-col gap-4">
+            <div className="flex flex-col gap-4 pl-4 pb-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-lg ${
+                  className={
                     pathname === link.href
-                      ? "text-blue-400"
-                      : "text-slate-300 hover:text-blue-400"
-                  }`}
+                      ? "text-accent"
+                      : "text-foreground/70 hover:text-accent transition"
+                  }
                 >
                   {link.name}
                 </Link>
