@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -22,6 +23,7 @@ const navLinks = [
 
 export function Navbar() {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
   return (
     <nav className="w-full border-b border-border bg-surface/90 backdrop-blur supports-backdrop-filter:bg-surface/70 fixed top-0 left-0 z-50">
@@ -30,7 +32,7 @@ export function Navbar() {
           adji.dev
         </Link>
 
-        {/* Dekstop Nav */}
+        {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link
@@ -48,7 +50,7 @@ export function Navbar() {
         </div>
 
         {/* Mobile Nav */}
-        <Sheet>
+        <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <Button
               variant="outline"
@@ -73,6 +75,7 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  onClick={() => setOpen(false)} // <<<<<< CLOSE SHEET
                   className={
                     pathname === link.href
                       ? "text-accent"
