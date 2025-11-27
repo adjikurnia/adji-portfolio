@@ -72,7 +72,7 @@ export function Navbar() {
             {/* MOBILE MENU CONTENT */}
             <SheetContent
               side="top"
-              className="bg-surface/95 border-b border-border h-auto"
+              className="border-b border-border h-auto"
             >
               <SheetHeader>
                 <SheetTitle className="text-accent">Menu</SheetTitle>
