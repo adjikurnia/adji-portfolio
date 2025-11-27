@@ -21,8 +21,7 @@
 --radius: 8px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
+.light {
   --background: #ffffff;
   --surface: #f8fafc;
   --foreground: #111827;
@@ -31,8 +30,6 @@
   --primary-hover: #3b82f6;
 
   --border: #e5e7eb;
-
-  }
 }
 
 @theme inline {
